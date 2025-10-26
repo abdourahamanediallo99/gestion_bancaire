@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: gestions-bancaire
+    runtime: docker
+    buildCommand: docker build -t gestions-bancaire .
+    startCommand: docker run -p $PORT:80 gestions-bancaire
+    envVars:
+      - key: APP_ENV
+        value: production
+      - key: APP_DEBUG
+        value: "false"
+      - key: APP_URL
+        generateValue: true
+      - key: L5_SWAGGER_CONST_HOST
+        generateValue: true
+      - key: L5_SWAGGER_GENERATE_ALWAYS
+        value: "false"
